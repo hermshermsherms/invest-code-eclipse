@@ -20,7 +20,7 @@ public static void addToMap(String name, Stock stock ){
 	table.put(name, stock);
 	
 }
-
+//testing
 public Stock getFromMap(String name){
 	Stock rval = table.get(name);
 	return rval;
