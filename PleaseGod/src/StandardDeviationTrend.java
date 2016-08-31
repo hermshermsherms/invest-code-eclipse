@@ -1,25 +1,27 @@
-//Standard Deviation
+//Standard Deviation Trend
 
-public class StandardDeviation extends GraphData {
+public class StandardDeviationTrend extends GraphData {
 
    private double STDEV;
    private double sum;
    private double avg;
 
-   public StandardDeviation(String fileName) {
+   //public StandardDeviation(String fileName) {
+   public StandardDeviationTrend() {
    
+   System.out.println("numRows: " + numRows);
+
    type = "STDEV";
-   GraphData graphPoints = new GraphData(fileName);
-   numRows = graphPoints.numRows;
+   //numRows = graphPoints.numRows;
    
       array = new double[numRows-1][2];
       
          for (int r = 0; r < array.length; r++) {
-            array[r][0] = graphPoints.array[r+1][1] - graphPoints.array[r][1];
+            array[r][0] = array[r+1][1] - array[r][1];
             //array[r][0] = graphData[r++][1] - graphData[r][1];
          }
       
-      System.out.println("Standard Deviation: " + FindSTDEV(graphPoints.array));
+      System.out.println("Standard Deviation: " + FindSTDEV(array));
       System.out.println("Standard Deviation from average slope: " + FindSTDEV(array));
          
 }

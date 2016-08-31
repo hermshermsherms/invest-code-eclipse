@@ -13,38 +13,27 @@ public class GraphData extends DataSet {
    protected double maxVal;
    protected int numRows;
    Scanner inFile;
+   String fileName;
    
 public GraphData() {
-
-}
-
-public GraphData(String fileName) {
    
    type = "Graph Data";
-   //public ArrayFromFile(String fileName) throws IOException {
-      
-   SetUpFile(fileName);
    
-     //Find the number of rows: 
-         while (inFile.hasNext()) {
+   StockValues data = new StockValues();
       
-            inFile.nextLine();
-         
-            numRows++; }
+   numRows = data.numLines;
             
       //Make an array of this size:
       array = new double[numRows][2];
       
-      //Put the data from the file into a 2D array:
-      SetUpFile(fileName);
-      
          for (int r = 0; r < numRows; r++) {
          
-            for (int c = 0; c < 2; c++) {
+            array[r][0] = r+1; }
+         
+         for (int r = 0; r < numRows; r++) {
             
-               array[r][c] = inFile.nextDouble();
+               array[r][1] = data.close[r];
             }
-         }
          
    //Find the minimum value:
    //minVal = FindMinValue();
@@ -55,27 +44,6 @@ public GraphData(String fileName) {
    //maxVal = FindMaxValue();
    FindMaxValue();
    
-}
-
-public void SetUpFile(String fileName) {
-   
-   inFile = null;
-      
-      while (inFile == null) {
-      
-      try {
-         inFile = new Scanner(new FileReader(fileName + ".txt")); //GraphData.txt
-         //inFile = new Scanner(new FileReader(fileName + ".csv")); //GraphData.txt
-
-      }
-      
-      catch (FileNotFoundException e) {
-         System.err.println(e.getMessage());
-         System.err.print("File not found.");
-         System.err.print("sorry, try again...");
-         inFile = null;
-         }
-      }  
 }
 
 public String toString() {
@@ -130,4 +98,3 @@ public void FindMaxValue() {
 }
 
 }
-

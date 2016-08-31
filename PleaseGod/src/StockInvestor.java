@@ -14,19 +14,14 @@ public class StockInvestor {
    
    Scanner keyboard = new Scanner(System.in);
    
-   System.out.print("Enter the name of the file containing stock data:  ");
-         String fileName = keyboard.next();
+   //PullFromURL siteData = new PullFromURL();
+   //StockValues stockValues = new StockValues();
          
-   Stock stock = new Stock(fileName);
-
-   //GraphData originalData = new GraphData(fileName);
-   //PeakFinder peaks = new PeakFinder(fileName);
-   //StandardDeviation stdev = new StandardDeviation(fileName);
+   StockAnalytics stock = new StockAnalytics();
 
       System.out.print("Enter a name for the file you'd like to create:  ");
       String outputFile = keyboard.next();
          
-         //FileGenerator newFile = new FileGenerator(outputFile, originalData, peaks); //make it super.toString
-         FileGenerator newFile = new FileGenerator(outputFile, stock);
+        FileGenerator newFile = new FileGenerator(outputFile, stock);
 }
 }         
