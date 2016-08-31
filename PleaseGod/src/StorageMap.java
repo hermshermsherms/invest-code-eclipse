@@ -21,6 +21,7 @@ public static void addToMap(String name, Stock stock ){
 	
 }
 //testing
+//this is the worst
 public Stock getFromMap(String name){
 	Stock rval = table.get(name);
 	return rval;
