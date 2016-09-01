@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 public class StockInvestor {
 
-//private Stock[] stocks = new Stock[100];
+//private static Stock[] stocks = new Stock[100];
 
    public static void main(String[]args) throws IOException {
    
@@ -16,8 +16,17 @@ public class StockInvestor {
    
    //PullFromURL siteData = new PullFromURL();
    //StockValues stockValues = new StockValues();
+   
+   /*String userInput = "";
+   int counter = 0;
+   
+   while (userInput != "0") {*/
          
-   StockAnalytics stock = new StockAnalytics();
+      Stock stock = new Stock();
+   
+      //stocks[counter] = stock;
+   
+   //}
 
       System.out.print("Enter a name for the file you'd like to create:  ");
       String outputFile = keyboard.next();
