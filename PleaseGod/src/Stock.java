@@ -9,6 +9,7 @@ public class Stock { //extends DataSet
    protected double[] low;
    protected double[] close;
    protected double[] volume;
+   protected double[] adjClose;
    protected int numLines;
 
    public Stock() {
@@ -28,6 +29,7 @@ public class Stock { //extends DataSet
    low = new double[numLines];
    close = new double[numLines];
    volume = new double[numLines];
+   adjClose = new double[numLines];
       
       for (int i = 0; i < numLines; i++) {
       
@@ -44,18 +46,19 @@ public class Stock { //extends DataSet
          close[i] = Double.parseDouble(line.substring(0, line.indexOf(",")));
             line = line.substring(line.indexOf(",")+1);
          volume[i] = Double.parseDouble(line.substring(0, line.indexOf(",")));
+            line = line.substring(line.indexOf(",")+1);
+         adjClose[i] = Double.parseDouble(line);
       }
    }
    
 public String toString() {
 
-String toString = "date   open   high   low   close   volume" + "\n";
+String toString = "date         open    high    low     close   volume       adjClose" + "\n";
 
    for (int l = 0; l < numLines; l++) {
    
-      toString = toString + date[l] + "   " + open[l] + "   " 
-                          + high[l] + "   " + low[l] + "   " + close[l] 
-                          + "   " + volume[l] + "\n";
+   toString = toString + String.format(date[l] + "   %.2f  %.2f  %.2f  %.2f  %.2f  %.2f \n" 
+                                      ,open[l],high[l],low[l],close[l],volume[l],adjClose[l]);
    }
    
    return toString;
