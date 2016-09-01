@@ -9,6 +9,7 @@ protected URL oracle;
 protected BufferedReader in;
 protected String[] stockArray;
 protected int numLines;
+protected String input;
 
    public PullFromURL() {
       Scanner keyboard = new Scanner(System.in);
@@ -24,7 +25,7 @@ protected int numLines;
       while (oracle == null && in == null) {
       
          System.out.println("What stock do you want to add to the database?");
-         String input = keyboard.nextLine();
+         input = keyboard.nextLine();
          
          String baseUrl = "http://chart.finance.yahoo.com/table.csv?s=";
    		String endUrl = "&a=6&b=26&c=2016&d=7&e=26&f=2016&g=d&ignore=.csv";
@@ -51,9 +52,9 @@ protected int numLines;
       
 		in.close();
       
-		for(int j=0;j<numLines;j++){ //print array
-			System.out.println(stockArray[j]);
-      }
+		//for(int j=0;j<numLines;j++){ //print array
+			//System.out.println(stockArray[j]);
+      //}
       
       }//close try block
          
