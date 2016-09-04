@@ -11,17 +11,16 @@ public class GraphData extends DataSet {
 
    protected double minVal;
    protected double maxVal;
-   protected int numRows;
    Scanner inFile;
    String fileName;
    
-public GraphData() {
+public GraphData(Stock stock) {
    
    type = "Graph Data";
    
-   StockValues data = new StockValues();
-      
-   numRows = data.numLines;
+   numRows = stock.numLines;
+   
+   //System.out.println("numRows GD: " + numRows);
             
       //Make an array of this size:
       array = new double[numRows][2];
@@ -32,7 +31,7 @@ public GraphData() {
          
          for (int r = 0; r < numRows; r++) {
             
-               array[r][1] = data.close[r];
+               array[r][1] = stock.close[r];
             }
          
    //Find the minimum value:
@@ -48,7 +47,7 @@ public GraphData() {
 
 public String toString() {
 
-String toString = type + "\n";
+String toString = "\n" + type + "\n";
 
    for (int r = 0; r < numRows; r++) {
       

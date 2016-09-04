@@ -1,28 +1,34 @@
 //Standard Deviation Trend
 
-public class StandardDeviationTrend extends GraphData {
+public class StandardDeviationTrend extends DataSet {
 
    private double STDEV;
    private double sum;
    private double avg;
+   private String toString;
 
-   //public StandardDeviation(String fileName) {
-   public StandardDeviationTrend() {
+   public StandardDeviationTrend(GraphData twoDimensionalData) {
    
-   System.out.println("numRows: " + numRows);
+   numRows = twoDimensionalData.numRows;
+   //System.out.println("numRows: " + numRows);
+   //System.out.println("GraphData.numRows: " + twoDimensionalData.numRows);
 
    type = "STDEV";
-   //numRows = graphPoints.numRows;
    
       array = new double[numRows-1][2];
       
-         for (int r = 0; r < array.length; r++) {
-            array[r][0] = array[r+1][1] - array[r][1];
-            //array[r][0] = graphData[r++][1] - graphData[r][1];
+         for (int r = 0; r < numRows-1; r++) {
+            array[r][0] = twoDimensionalData.array[r+1][1] - twoDimensionalData.array[r][1];
          }
-      
-      System.out.println("Standard Deviation: " + FindSTDEV(array));
-      System.out.println("Standard Deviation from average slope: " + FindSTDEV(array));
+         
+      double[][] stdevArray = new double[numRows-1][2]; 
+         for (int r = 0; r < numRows-1; r++) {
+            stdevArray[r][0] = twoDimensionalData.array[r+1][1];
+         }
+         
+      //System.out.println("Standard Deviation: " + STDEV(twoDimensionalData.array));
+      toString = "Standard Deviation: " + FindSTDEV(stdevArray) + "\n" 
+      + "Standard Deviation from average slope: " + FindSTDEV(array) + "\n";
          
 }
 
@@ -51,6 +57,11 @@ public double FindSTDEV(double[][] array) {
       STDEV = Math.sqrt(avg);
       
    return STDEV;  
+}
+
+public String toString() {
+
+return "\n" + type + "\n" + toString;  
 }
 
 }

@@ -6,23 +6,26 @@ public class StockAnalytics {
 /**
  * Create array of size NUMBER_OF_DATASETS
  */
-   private DataSet[] stock = new DataSet[NUMBER_OF_DATASETS];
+   private DataSet[] stockAnalytics = new DataSet[NUMBER_OF_DATASETS];
    
    private String name;
    
-/**
- * Constructs a Stock
- */
-public StockAnalytics() {
+
+//public StockAnalytics() {
+
+//}
+
+public StockAnalytics(Stock stock) {
+
    
-   GraphData columnOneTwo = new GraphData();
-   //PeakFinder columnThree = new PeakFinder();
-   StandardDeviationTrend columnFour = new StandardDeviationTrend();
+   GraphData twoDimensionalData = new GraphData(stock);
+   //columnOneTwo.graphData(stockName);
+   PeakFinder peaks = new PeakFinder(twoDimensionalData);
+   StandardDeviationTrend stdev = new StandardDeviationTrend(twoDimensionalData);
    
-   stock[0] = columnOneTwo;
-   stock[1] = columnFour;
-   
-   //stock[2] = columnThree;
+   stockAnalytics[0] = twoDimensionalData;
+   stockAnalytics[1] = stdev;
+   stockAnalytics[2] = peaks;
    
 }
 
@@ -30,9 +33,9 @@ public String toString() {
 
 String toString = "";
 
-   for (int r = 0; r < 2; r++) { 
+   for (int r = 0; r < 3; r++) { 
    
-      toString = toString + stock[r].toString();
+      toString = toString + stockAnalytics[r].toString();
       
       }
    

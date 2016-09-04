@@ -17,7 +17,7 @@ Scanner keyboard = new Scanner(System.in);
    protected String type;
 
 /**
- * Stores the ID of a Provider (for the switch)
+ * Stores the number of rows in the array
  */  
    protected int numRows;
    

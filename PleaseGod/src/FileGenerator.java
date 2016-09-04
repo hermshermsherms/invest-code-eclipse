@@ -22,4 +22,18 @@ public class FileGenerator {
          outFile.close();
 
 }
+
+public FileGenerator(String outputFile, String data) throws IOException {
+
+   PrintWriter outFile = new PrintWriter(new FileWriter(outputFile));
+         //outFile.println(originalData.type);
+         //outFile.print(originalData + "\n");
+         //outFile.println(peaks.type);
+         //outFile.print(peaks + "\n");
+         
+      outFile.print(data);
+         //outFile.print(siteData);
+         
+      outFile.close();
+}
 }
